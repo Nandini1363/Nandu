@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Elegant Eats - Restaurant</title>
+<style>
+  /* Nimbus-inspired clean & elegant style */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0; 
+    font-family: 'Poppins', sans-serif;
+    background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+  }
+
+  header {
+    background: rgba(255 255 255 / 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav .logo {
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: #b22222;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  nav ul li {
+    cursor: pointer;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: #b22222;
+    font-weight: 600;
+  }
+
+  nav ul li a:hover {
+    text-decoration: underline;
+  }
+
+  section {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: rgba(255 255 255 / 0.85);
+    border-radius: 8px;
+  }
+
+  /* Home Section */
+  #home {
+    text-align: center;
+    padding: 6rem 2rem;
+    color: #b22222;
+  }
+  #home h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  #home p {
+    font-size: 1.3rem;
+  }
+
+  /* About Us */
+  #about p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  /* Menu Section */
+  #menu .filters {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  #menu .filters button {
+    background: #b22222;
+    border: none;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    margin: 0 0.5rem 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  #menu .filters button:hover,
+  #menu .filters button.active {
+    background: #7f1717;
+  }
+
+  #menu .menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 1.5rem;
+  }
+
+  .menu-item {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  .menu-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .menu-item h4 {
+    margin: 0.8rem 0 0.4rem;
+    color: #b22222;
+  }
+
+  .menu-item p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  /* Gallery */
+  #gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 1rem;
+  }
+
+  #gallery img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  /* Reservation Form */
+  #reservation form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #reservation label {
+    font-weight: 600;
+  }
+
+  #reservation input, #reservation select {
+    padding: 0.7rem;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+
+  #reservation button {
+    background: #b22222;
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  #reservation button:hover {
+    background: #7f1717;
+  }
+
+  /* Location */
+  #location iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 10px;
+  }
+
+  /* Blog */
+  #blog article {
+    background: white;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  #blog article h3 {
+    margin-top: 0;
+    color: #b22222;
+  }
+
+  /* Footer */
+  footer {
+    background: #b22222;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  footer .social-icons {
+    margin: 1rem 0;
+  }
+
+  footer .social-icons a {
+    color: white;
+    margin: 0 0.7rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  footer .social-icons a:hover {
+    color: #f0a3a3;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav ul {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #home h1 {
+      font-size: 2.2rem;
+    }
+  }
+</style>
+<!-- FontAwesome for social icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Elegant Eats</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reservation">Reservation</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#blog">Blog</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="home">
+  <h1>Welcome to Elegant Eats</h1>
+  <p>Experience the finest dining with exquisite flavors & elegant ambiance.</p>
+</section>
+
+<section id="about">
+  <h2>About Us</h2>
+  <p>At Elegant Eats, we believe in delivering culinary excellence with a touch of elegance. Our chefs craft dishes using fresh ingredients and authentic recipes, creating a memorable dining experience. Join us for an unforgettable journey of taste and ambiance.</p>
+</section>
+
+<section id="menu">
+  <h2>Our Menu</h2>
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="veg">Vegetarian</button>
+    <button class="filter-btn" data-filter="nonveg">Non-Vegetarian</button>
+    <button class="filter-btn" data-filter="special">Specials</button>
+  </div>
+  <div class="menu-items">
+    <!-- Menu items will be populated by JS -->
+  </div>
+</section>
+
+<section id="gallery">
+  <h2>Gallery</h2>
+  <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Dining Room" />
+  <img src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=600&q=80" alt="Food Plating" />
+  <img src="https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?auto=format&fit=crop&w=600&q=80" alt="Restaurant Ambiance" />
+  <img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?auto=format&fit=crop&w=600&q=80" alt="Bar Area" />
+</section>
+
+<section id="reservation">
+  <h2>Book a Table</h2>
+  <form id="reservation-form" novalidate>
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" required placeholder="Your full name" />
+    
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" required placeholder="you@example.com" />
+    
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" required placeholder="+1234567890" />
+    
+    <label for="date">Reservation Date</label>
+    <input type="date" id="date" name="date" required />
+    
+    <label for="time">Time</label>
+    <input type="time" id="time" name="time" required />
+    
+    <label for="guests">Number of Guests</label>
+    <select id="guests" name="guests" required>
+      <option value="">Select</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5+">5+</option>
+    </select>
+    
+    <button type="submit">Reserve Now</button>
+  </form>
+</section>
+
+<section id="location">
+  <h2>Our Location</h2>
+  <iframe
+    src="https://maps.google.com/maps?q=restaurant%20location&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+</section>
+
+<section id="blog">
+  <h2>From Our Blog</h2>
+  <article>
+    <h3>5 Tips for the Perfect Dinner Date</h3>
+    <p>Discover how to impress your date with ambiance, food choices, and timing for a flawless dinner experience.</p>
+  </article>
+  <article>
+    <h3>Seasonal Menu Specials</h3>
+    <p>Explore our fresh, seasonal ingredients and how they inspire our chefs to create unique dishes.</p>
+  </article>
+</section>
+
+<footer>
+  <p>Follow Us on Social Media</p>
+  <div class="social-icons">
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+  </div>
+  <p>&copy; 2025 Elegant Eats. All rights reserved.</p>
+</footer>
+
+<script>
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Menu Items Data
+  const menuData = [
+    {id: 1, name: "Grilled Vegetable Salad", category: "veg", desc: "Fresh veggies with balsamic dressing", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80"},
+    {id: 2, name: "Chicken Alfredo Pasta", category: "nonveg", desc: "Creamy Alfredo sauce with grilled chicken", img: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=400&q=80"},
+    {id: 5, name: "Seafood Platter", category: "special", desc: "Assorted fresh seafood with sauces", img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"},
+  ];
+
+  const menuContainer = document.querySelector('#menu .menu-items');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+
+  // Function to display menu items filtered by category
+  function displayMenuItems(category = 'all') {
+    let filteredItems = category === 'all' ? menuData : menuData.filter(item => item.category === category);
+    menuContainer.innerHTML = filteredItems.map(item => `
+      <div class="menu-item" tabindex="0">
+        <img src="${item.img}" alt="${item.name}" />
+        <h4>${item.name}</h4>
+        <p>${item.desc}</p>
+      </div>
+    `).join('');
+  }
+
+  // Initialize menu with all items
+  displayMenuItems();
+
+  // Filter button event listeners
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      displayMenuItems(btn.dataset.filter);
+    });
+  });
+
+  // Reservation form handling
+  const reservationForm = document.getElementById('reservation-form');
+  reservationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Basic validation (HTML5 validation mostly)
+    if (!reservationForm.checkValidity()) {
+      reservationForm.reportValidity();
+      return;
+    }
+
+    // Simulate reservation confirmation
+    const name = reservationForm.name.value.trim();
+    const date = reservationForm.date.value;
+    const time = reservationForm.time.value;
+    const guests = reservationForm.guests.value;
+
+    alert(`Thank you, ${name}! Your table for ${guests} on ${date} at ${time} has been reserved.`);
+
+    reservationForm.reset();
+  });
+</script>
+
+</body>
+</html>
